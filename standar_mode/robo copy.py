@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # SECCION LIDAR
-uart1 = serial.Serial('COM3', baudrate=115200)  # Inicializa el puerto serie.
+uart1 = serial.Serial('/dev/ttyUSB0', baudrate=115200)  # Inicializa el puerto serie.
 uart1.write(bytes([0xA5, 0x20]))  # Envía el comando para iniciar el escaneo en modo estándar.
 sleep(0.002)  # Espera por el Descriptor de Respuesta (debe ser > 0.002).
 print(uart1.read(7))  # Lee el Descriptor de Respuesta.
