@@ -2,6 +2,9 @@ import serial
 from time import sleep
 
 uart1 = serial.Serial('/dev/ttyUSB0', baudrate=115200) # Initalize the serial port.
+uart1.write(bytes([0xA5, 0x25])) # Send command to stop scanning.
+sleep(0.1) # Wait for the scan to stop.
+uart1.flushInput() # Clears the input buffer on the serial port.
 uart1.write(bytes([0xA5, 0x20])) # Send command to start scanning in standard mode.
 sleep(0.002) # Waits for the Response Descriptor (must be > 0.002).
 print(uart1.read(7)) # Read the Response Descriptor.
@@ -26,5 +29,3 @@ while True:
         print('Data size is invalid.')
         break
 uart1.write(bytes([0xA5, 0x25])) # Send command to stop scanning.
-sleep(0.5)
-uart1.read()
