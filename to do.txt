@@ -1,0 +1,6 @@
+Probar el esp32 con dos puertos uart simultaneos.
+Reescribir el codigo standar para micropython.
+Reescribir el codigo en arduino.
+Mejorar logica del codigo.
+Estudiar las estructuras de datos.
+Buscar informacion sobre el modo boost del protocolo de comunicación.
