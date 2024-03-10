@@ -1,7 +1,7 @@
 import serial
 from time import sleep
 
-uart1 = serial.Serial('COM3', baudrate=115200) # Initalize the serial port.
+uart1 = serial.Serial('COM5', baudrate=115200) # Initalize the serial port.
 uart1.write(bytes([0xA5, 0x25])) # Send command to stop scanning.
 sleep(0.1) # Wait for the scan to stop.
 uart1.flushInput() # Clears the input buffer on the serial port.
@@ -28,7 +28,7 @@ while True:
         angl = (message[2] << 7) | (message[1] >> 1) # Extract the angle from data.
         dist = (message[4] << 8) | message[3] # Extract the distance from data.
         print(bin(angl), bin(dist)) # Print the raw angle and distance.
-        print('Angle: ' + str(angl/64) + '°' + ' Distance: ' + str(dist/40) + 'cm') # Print the real angle and distance.
+        print('Angle: ' + str(angl/64) + ' Grades' + ' Distance: ' + str(dist/40) + ' cm') # Print the real angle and distance.
     else:
         print('Data size is invalid.')
         break
